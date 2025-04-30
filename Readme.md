@@ -18,7 +18,9 @@ docker images  -> shows images in local machine
 
 docker images ls  -> lists all the docker images
 
-docker run -it -p 9000:9000 image_name  -> to expose containers port 1025 to local machine 9000
+docker run -it -p 9000:9000 image_name  -> to expose containers port 9000 to local machine 
+
+
 
 
 

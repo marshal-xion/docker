@@ -37,7 +37,7 @@ ping name -> will be able to ping from one container to another.
 we can use this in a project where we create our own nw in bridge mode and then we can create one container with posgres and another with node they can comunicate with each other without worrying about ip address.
 
 
-
+========================================================================================
 
 
 volume mounting
@@ -61,7 +61,7 @@ docker run -d --name det --mount source=vol1,target=/app nginx:latest  -> mounts
 
 docker inspect det  -> inspects the volume
 
-
+=================================================================================================
 
 
 Efficient caching
@@ -80,7 +80,7 @@ WORKDIR /app  -> dont have to mention path if workdir is mentioned
 
 RUN CD app && npm install  -> running 2 command in 1 line
 
-
+===============================================================================================================
 
 
 Multi stage build
@@ -107,10 +107,10 @@ RUN tsc -p .
 COPY main.js main.js
 
 ENTRYPOINT [ "node", "main.js ]
-
+===============================================================================================================================
 
 some sw needs during build process but not in production so we can use multi stage build to set the type script in a separate build
-
+-----------------------------------------------------------
 
 FROM ubuntu as build 
 
@@ -129,6 +129,9 @@ COPY package-lock.json package-lock.json
 RUN npm install
 RUN tsc -p . 
 
+
+
+--------------------------------------------------------
 
 
 FROM node as runner

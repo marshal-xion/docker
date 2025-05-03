@@ -1,0 +1,43 @@
+Multicontainer
+
+need compose.yaml file in the root folder to create a multicontainer app.
+
+services:
+  app1:
+    build:
+      context: ./app
+    depends_on:
+      - db1
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+      - 35729:35729
+    develop:
+      watch:
+        - path: ./app/package.json
+          action: rebuild
+        - path: ./app
+          target: /usr/src/app
+          action: sync
+
+  db1:
+    image: mongo:6
+    volumes: 
+      - database:/data/db
+    ports:
+      - 27017:27017
+
+
+ then run docker compose up -d           
+ -> This command builds and runs all the services listed in the compose file in a detached mode.
+
+
+
+ docker compose watch                  
+ ->When developing with Docker, you may need to automatically update and preview your running services as you edit and save your code. We use docker compose watch for this.
+
+
+
+you can run below cmd anytime to resume your app evenif you delete the image. it will simply get back from compose file
+docker compose up 
